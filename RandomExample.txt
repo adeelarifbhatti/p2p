@@ -12,10 +12,10 @@ network.size SIZE
 simulation.endtime CYCLE*CYCLES
 simulation.logtime CYCLE
 
-
-protocol.gossip IdleProtocol
-{
-}
+## Adeel commented following
+#protocol.gossip IdleProtocol
+#{
+#}
 
 init.wire WireKOut
 {
