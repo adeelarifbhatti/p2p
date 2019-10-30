@@ -131,10 +131,11 @@ public class BasicShuffle  implements Linkable, EDProtocol, CDProtocol{
 		//	  - Example code for sending a message:
 		//
 		
-		 GossipMessage message = new GossipMessage(node, subset);
+		 /*GossipMessage message = new GossipMessage(node, subset);
 		 message.setType(MessageType.SHUFFLE_REQUEST);
 		 Transport tr = (Transport) node.getProtocol(tid);
-		 tr.send(node, q.getNode(), message, protocolID);
+		 tr.send(node, q.getNode(), message, protocolID);*/
+		sendMessage(node, q.getNode(), subset, MessageType.SHUFFLE_REQUEST, protocolID);
 		//
 		// 8. From this point on P is waiting for Q's response and will not initiate a new shuffle operation;
 		//
@@ -142,7 +143,12 @@ public class BasicShuffle  implements Linkable, EDProtocol, CDProtocol{
 		// The response from Q will be handled by the method processEvent.
 		
 	}
-	
+	private void sendMessage(Node srcNode, Node destNode, List<Entry> subset, MessageType type, int protocolID) {
+		GossipMessage message = new GossipMessage(srcNode, subset);
+		message.setType(type);
+		Transport tr = (Transport) srcNode.getProtocol(tid);
+		tr.send(srcNode, destNode, message, protocolID);
+	}
 
 	/* The simulator engine calls the method processEvent at the specific time unit that an event occurs in the simulation.
 	 * It is not called periodically as the nextCycle method.
@@ -162,10 +168,11 @@ public class BasicShuffle  implements Linkable, EDProtocol, CDProtocol{
 		// If the message is a shuffle request:
 		case SHUFFLE_REQUEST:
 			if(nodeRemovedFlag) {
-				//GossipMessage message1 = new GossipMessage(node, null);
-				 message.setType(MessageType.SHUFFLE_REQUEST);
+				/*GossipMessage message1 = new GossipMessage(node, null);
+				 message1.setType(MessageType.SHUFFLE_REQUEST);
 				 Transport tr = (Transport) node.getProtocol(tid);
-				 tr.send(node, p, MessageType.SHUFFLE_REJECTED, pid);
+				 tr.send(node, p, MessageType.SHUFFLE_REJECTED, pid);*/
+				sendMessage(node, p, null, MessageType.SHUFFLE_REJECTED, pid);
 				
 				return;
 			}
@@ -189,10 +196,11 @@ public class BasicShuffle  implements Linkable, EDProtocol, CDProtocol{
 		//		 - Use empty cache slots to add the new entries
 		//		 - If the cache is full, you can replace entries among the ones sent to P with the new ones
 			
-			GossipMessage message1 = new GossipMessage(node, subset); 
+			/*GossipMessage message1 = new GossipMessage(node, subset); 
 			message1.setType(MessageType.SHUFFLE_REQUEST);
 			 Transport tr = (Transport) node.getProtocol(tid);
-			 tr.send(node, p, MessageType.SHUFFLE_REPLY, pid);
+			 tr.send(node, p, MessageType.SHUFFLE_REPLY, pid);*/
+			sendMessage(node, p, subset, MessageType.SHUFFLE_REPLY, pid);
 			
 			break;
 		
