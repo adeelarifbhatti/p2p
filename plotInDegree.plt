@@ -1,5 +1,5 @@
-#set terminal png enhanced
-#set output 'plot.png'
+set terminal png enhanced
+set output 'plot.png'
 
 set title "In-degree distribution"
 set xlabel "in-degree"

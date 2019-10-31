@@ -40,3 +40,23 @@ control.graphPL GraphStats
 	#nl 10
 	nc 1000
 }
+control.avgClustering example.gossip.AverageClusteringPrinter
+{
+	protocol gossip
+	step CYCLE
+	undir true
+	nc 1000
+	type Random
+	cacheSize 50
+}
+
+control.avgLength example.gossip.AverageLengthPrinter
+{
+	protocol gossip
+	step CYCLE
+	undir true
+	nl 10
+	type Random
+	cacheSize 50
+}
+
