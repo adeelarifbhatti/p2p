@@ -35,7 +35,7 @@ public class AvgLengthPrint extends GraphStatsPrint {
 
 		nl = Configuration.getInt(name + "." + PAR_NL, 0);
 		
-		init("output-length-" + type + "-c" + cacheSize + ".txt");
+		init("length-" + type + "-cache" + cacheSize + ".txt");
 	}
 
 	/**

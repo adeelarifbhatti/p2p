@@ -33,7 +33,7 @@ public class AvgClusterPrint extends GraphStatsPrint {
 
 		nc = Configuration.getInt(name + "." + PAR_NC, 0);
 		
-		init("output-clustering-" + type + "-c" + cacheSize + ".txt");
+		init("clustering-" + type + "-cache" + cacheSize + ".txt");
 	}
 
 	/**

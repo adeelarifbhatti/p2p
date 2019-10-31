@@ -23,24 +23,26 @@ init.wire WireKOut
 	k 50
 }
 
-control.degree example.reports.InDegreeObserver
+control.degree example.gossip.DegreePrint
 {
 	protocol gossip
-
+	
 	step CYCLE
-	starttime 299000
-	endtime 300000
+	type Random
+	cacheSize 50
 }
+
+
 
 control.graphPL GraphStats
 {
 	protocol gossip
 	step CYCLE
 	undir true
-	#nl 10
+	nl 10
 	nc 1000
 }
-control.avgClustering example.gossip.AverageClusteringPrinter
+control.avgClustering example.gossip.AvgClusterPrint
 {
 	protocol gossip
 	step CYCLE
@@ -50,7 +52,7 @@ control.avgClustering example.gossip.AverageClusteringPrinter
 	cacheSize 50
 }
 
-control.avgLength example.gossip.AverageLengthPrinter
+control.avgLength example.gossip.AvgLengthPrint
 {
 	protocol gossip
 	step CYCLE

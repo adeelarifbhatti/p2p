@@ -31,7 +31,7 @@ public class DegreePrint extends GraphStatsPrint {
 
 		pid = Configuration.getPid(name + "." + PAR_PID);
 		
-		init("output-indegree-" + type + "-c" + cacheSize + ".txt");
+		init("indegree-" + type + "-cache" + cacheSize + ".txt");
 	}
 
 	@Override

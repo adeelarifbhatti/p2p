@@ -50,15 +50,6 @@ init.sch CDScheduler
 	protocol gossip
 }
 
-control.degree example.reports.InDegreeObserver
-{
-	protocol gossip
-
-	step CYCLE
-	starttime 299000
-	endtime 300000
-}
-
 control.graphPL GraphStats
 {
 	protocol gossip
@@ -69,3 +60,32 @@ control.graphPL GraphStats
 	# uncomment the next line to produce clustering information
 	nc 1000
 }
+control.avgClustering example.gossip.AvgClusterPrint
+{
+	protocol gossip
+	step CYCLE
+	undir true
+	nc 1000
+	type Shuffle
+	cacheSize 50
+}
+
+control.avgLength example.gossip.AvgLengthPrint
+{
+	protocol gossip
+	step CYCLE
+	undir true
+	nl 10
+	type Shuffle
+	cacheSize 50
+}
+control.degree example.gossip.DegreePrint
+{
+	protocol gossip
+	
+	step CYCLE
+	type Shuffle
+	cacheSize 50
+}
+
+
