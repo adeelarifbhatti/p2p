@@ -7,7 +7,7 @@ set xlabel "cycles"
 set ylabel "clustering coefficient (log)"
 set key right top
 set logscale y 
-plot "ccRandom30.txt" title 'Random Graph c = 30' with lines, \
-	"cc30.txt" title 'Shuffle c = 30' with lines, \
-	"ccRandom50.txt" title 'Random Graph c = 50' with lines, \
-	"cc50.txt" title 'Shuffle c = 50' with lines
+plot "clustering-Random-cache30.txt" title 'Random Graph c = 30' with lines, \
+	"clustering-Shuffle-cache30.txt" title 'Shuffle c = 30' with lines, \
+	"clustering-Random-cache50.txt" title 'Random Graph c = 50' with lines, \
+	"clustering-Shuffle-cache50.txt" title 'Shuffle c = 50' with lines
