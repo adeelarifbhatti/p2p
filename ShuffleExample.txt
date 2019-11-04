@@ -4,7 +4,7 @@
 SIZE 10000
 
 CYCLE 1000
-CYCLES 300
+CYCLES 3000
 
 MINDELAY 10
 MAXDELAY 60
@@ -23,7 +23,7 @@ protocol.tr UniformRandomTransport
 protocol.gossip example.gossip.BasicShuffle
 {
 	# the cache size should be set to 30 and to 50.
-	cacheSize 50
+	cacheSize 30
 	shuffleLength 8
 
 	step CYCLE
@@ -31,19 +31,19 @@ protocol.gossip example.gossip.BasicShuffle
 	period CYCLE
 }
 
-init.wire WireStar
-{
-	protocol gossip
-}
+#init.wire WireStar
+#{
+#	protocol gossip
+#}
 
 # This initializes the topology as a ring. Use should also use WireStar to
 # initialize it as a star.
 
-#init.wire WireRingLattice
-#{
-#	protocol gossip
-#	k 1
-#}
+init.wire WireRingLattice
+{
+	protocol gossip
+	k 1
+}
 
 init.sch CDScheduler
 {
@@ -60,6 +60,14 @@ control.graphPL GraphStats
 	# uncomment the next line to produce clustering information
 	nc 1000
 }
+control.degree example.gossip.DegreePrint
+{
+	protocol gossip
+	
+	step CYCLE
+	type Shuffle
+	cacheSize 30
+}
 control.avgClustering example.gossip.AvgClusterPrint
 {
 	protocol gossip
@@ -67,7 +75,7 @@ control.avgClustering example.gossip.AvgClusterPrint
 	undir true
 	nc 1000
 	type Shuffle
-	cacheSize 50
+	cacheSize 30
 }
 
 control.avgLength example.gossip.AvgLengthPrint
@@ -77,15 +85,8 @@ control.avgLength example.gossip.AvgLengthPrint
 	undir true
 	nl 10
 	type Shuffle
-	cacheSize 50
+	cacheSize 30
 }
-control.degree example.gossip.DegreePrint
-{
-	protocol gossip
-	
-	step CYCLE
-	type Shuffle
-	cacheSize 50
-}
+
 
 

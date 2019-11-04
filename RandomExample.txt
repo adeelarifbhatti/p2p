@@ -5,7 +5,7 @@
 SIZE 10000
 
 CYCLE 1000
-CYCLES 300
+CYCLES 3000
 
 random.seed 1234567890
 network.size SIZE
@@ -13,14 +13,14 @@ simulation.endtime CYCLE*CYCLES
 simulation.logtime CYCLE
 
 ## Adeel commented following
-#protocol.gossip IdleProtocol
-#{
-#}
+protocol.gossip IdleProtocol
+{
+}
 
 init.wire WireKOut
 {
 	protocol gossip
-	k 50
+	k 30
 }
 
 control.degree example.gossip.DegreePrint
@@ -29,7 +29,7 @@ control.degree example.gossip.DegreePrint
 	
 	step CYCLE
 	type Random
-	cacheSize 50
+	cacheSize 30
 }
 
 
@@ -49,7 +49,7 @@ control.avgClustering example.gossip.AvgClusterPrint
 	undir true
 	nc 1000
 	type Random
-	cacheSize 50
+	cacheSize 30
 }
 
 control.avgLength example.gossip.AvgLengthPrint
@@ -59,6 +59,6 @@ control.avgLength example.gossip.AvgLengthPrint
 	undir true
 	nl 10
 	type Random
-	cacheSize 50
+	cacheSize 30
 }
 
