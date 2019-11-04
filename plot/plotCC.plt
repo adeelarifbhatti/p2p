@@ -5,6 +5,8 @@ set output 'plot1.png'
 set title "Average Clustering Coefficient"
 set xlabel "cycles"
 set ylabel "clustering coefficient (log)"
+set xrange [0:90]
+set yrange [0:800]
 set key right top
 set logscale y 
 plot "clustering-Random-cache30.txt" title 'Random Graph c = 30' with lines, \
