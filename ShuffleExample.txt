@@ -5,7 +5,7 @@ SIZE 10000
 
 CYCLE 1000
 CYCLES 3000
-
+CACHESIZE	30
 MINDELAY 10
 MAXDELAY 60
 
@@ -23,7 +23,7 @@ protocol.tr UniformRandomTransport
 protocol.gossip example.gossip.BasicShuffle
 {
 	# the cache size should be set to 30 and to 50.
-	cacheSize 30
+	cacheSize CACHESIZE
 	shuffleLength 8
 
 	step CYCLE
@@ -42,7 +42,7 @@ protocol.gossip example.gossip.BasicShuffle
 init.wire WireRingLattice
 {
 	protocol gossip
-	k 1
+	k CACHESIZE
 }
 
 init.sch CDScheduler
@@ -66,7 +66,7 @@ control.degree example.gossip.DegreePrint
 	
 	step CYCLE
 	type Shuffle
-	cacheSize 30
+	cacheSize CACHESIZE
 }
 control.avgClustering example.gossip.AvgClusterPrint
 {
@@ -75,7 +75,7 @@ control.avgClustering example.gossip.AvgClusterPrint
 	undir true
 	nc 1000
 	type Shuffle
-	cacheSize 30
+	cacheSize CACHESIZE
 }
 
 control.avgLength example.gossip.AvgLengthPrint
@@ -85,7 +85,7 @@ control.avgLength example.gossip.AvgLengthPrint
 	undir true
 	nl 10
 	type Shuffle
-	cacheSize 30
+	cacheSize CACHESIZE
 }
 
 
