@@ -38,7 +38,7 @@ public abstract class GraphStatsPrint extends GraphObserver {
 	}
 
 	@Override
-	public final boolean execute() {
+	public boolean execute() {
 		boolean result = execute(writer);
 
 		// Check if this is the last cycle

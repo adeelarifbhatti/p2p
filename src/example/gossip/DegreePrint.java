@@ -79,7 +79,7 @@ public class DegreePrint extends GraphStatsPrint {
 			}
 			dist.put(degree, value);
 		}
-
+		dist.remove(null);
 		// Sort the distribution and print the result
 		SortedSet<Integer> sortedKeys = new TreeSet<Integer>(dist.keySet());
 		for (int i = 0; i <= sortedKeys.last(); i++) {
